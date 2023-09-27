@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food lover</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1100px;
+            margin:auto;
+        }
+        /* --- utility classes ----*/
+        .primary-text {
+            color: #e4b95b;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+        }
+        .btn-primary {
+            color: #fff;
+            border: 1px solid #fff;
+        }
+        .btn-secondary {
+            color: #fff;
+            background: #383848;
+            margin-top: 2rem;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
+            background: #e4b95b;
+        }        
+        /* header start */
+        header {
+            height: 100vh;
+            background: url('./img/home_bg.jpeg') center center/cover no-repeat;
+            position: relative;
+        }
+        header #navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header #navbar img{
+            width: 80px;
+            margin-left: 100px; 
+        }
+        header #navbar ul {
+            display: flex;
+            margin-right: 100px;           
+        }
+        header #navbar li a {
+            padding:15px 20px;
+            color: #fff;
+            font-weight: 600;
+        }
+        header #navbar li a:hover {
+            border-bottom: 2px solid #e4b95b;
+        }
+        header .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 75%;
+        }
+        header .content h1 {
+            font-size: 40px;
+            color: #fff;
+        }
+        header .content p {
+            margin: 20px 0 40px;
+            color: #fff;
+        }
+        header::before {
+            content:"";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0,0,0, 0.6);
+        }
+        header * {
+            z-index: 10;
+        }
+        /* header end */ 
+
+        /*about start */
+        #about {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f4f4;
+        }
+        #about .title , 
+        #offers .title,
+        #menu .title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        #about h2 , 
+        #offers h2,
+        #menu h2,
+        #gallery h2{
+            font-size: 40px;            
+            margin-bottom: 20px;
+        }
+        #about h2,
+        #menu h2{
+            color: #383838;
+        }
+        #about .title p,
+        #menu .title p {
+            font-size: 14px;
+            color: #9a9a9a;
+            font-weight: 600;
+        }
+        #about .about-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        #about .about-content img {
+            width: 450px;
+        }
+        #about .about-content p {
+            color: #9a9a9a;
+            margin-right: 7rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        /*about end */
+
+        /* offers start */
+        #offers {
+            height:80vh ;
+            display: flex;
+            justify-content: center;
+            background: url('./img/offer-background.jpg') center center/cover;
+        }
+        #offers h2 {
+            color: #e4b95b;
+        }
+        #offers .title p{
+            color: #fff;
+            font-weight: 500;
+        }
+        #offers .offers-items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+        #offers .offers-items img {
+            width: 200px;
+        }
+        #offers .offers-items h3 {
+            font-size: 25px;
+            margin: 15px 0;
+        }
+        #offers .offers-items p {
+            font-size: 14px;
+            padding:0 20px ;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+        #offers .offers-items span {
+            font-size: 18px;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        /* offers end */
+
+        /* Menu start */
+        #menu {
+            background: #f4f4f4;
+            padding: 5rem 0;
+        }
+        #menu .menu-items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #menu .menu-items .menu-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px;
+        }
+        #menu .menu-items .menu-item img {
+            width: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        #menu .menu-items .menu-item h3 {
+            color: #383838;
+            border-bottom: 1px dashed #c2bdbd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        #menu .menu-items .menu-item span {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        #menu .btn {
+            display: block;
+            margin: 20px auto 0;
+            background: #e4b95b;
+            color: #fff;
+            cursor: pointer;
+        }
+        #menu .btn:hover {
+            background: #383838;
+        }
+        /* Menu end */
+
+        /* daytime start */
+        #daytime {
+            background: url('./img/daytime_bg.jpeg') center center/cover fixed no-repeat;
+            color: #fff;
+            text-align: center;
+        }
+        #daytime .daytime-items {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 40vh;
+        }
+        #daytime .daytime-items h3 {
+            font-size: 32px;
+            margin: 20px 0 10px;
+        }
+        #daytime .daytime-items p {
+            font-weight: 500;
+        }
+        /* daytime end */
+
+        /* gallery start */
+        #gallery {
+            background: url('./img/offer-background.jpg')center center/cover no-repeat;
+            padding: 8rem 0 6rem;
+        }
+        #gallery h2 {
+            color: #fff;
+            text-align: center;
+        }
+        #gallery .img-gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        #gallery .img-gallery img {
+            width: 280px;
+            height: 200px;
+            border-radius: 15px;
+            margin: 20px;
+            opacity: 0.8;
+        }
+        #gallery .img-gallery img:hover {
+            opacity: 1;
+        }
+        /* gallery end */
+
+        /* contact start */
+        #contact {
+            padding: 5rem 0;
+            background: #f4f4f4;
+        }
+        #contact .container {
+            max-width: 900px;
+        }
+        #contact .contact-content {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        #contact .contact-content .contact-info {
+            width: 50%;
+        }
+        #contact .contact-content .contact-info div {
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+        #contact .contact-content .contact-info h3 {
+            font-size: 28px;
+            color: #383838;
+            margin-bottom: 10px;
+        }
+        #contact .contact-content .contact-info p {
+            color: #9a9a9a;
+        }
+        #contact .contact-content .contact-info i {
+            color: #e4b95b;
+            margin-right: 5px;
+        }
+        #contact .contact-content .contact-info a i {
+            color: #fff;
+            background-color: #383838;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+        #contact .contact-content .contact-info a i:hover{
+            background: #e4b95b;
+            color: #383838;
+        }
+        #contact form {
+            width: 50%;
+        }
+        #contact form input, 
+        #contact  form textarea {
+            display: block;
+            width: 100%;
+            padding: 20px 15px;
+            margin: 20px 0;
+            border: none;
+            background-color: #e3e2dd;
+        }
+        #contact .btn {
+            background: #e4b95b;
+            color: #fff;
+            cursor: pointer;
+        }
+        #contact .btn:hover {
+            background-color: #383838;
+        }
+        /* contact end */
+
+        /* footer start */ 
+        #footer {
+            background: #383838;
+            text-align: center;
+            color: #fff;
+            padding: 15px 0;
+            font-size: 14px;
+        }
+        #footer a {
+            color: #fff;
+        }
+        /* footer end  */ 
+    </style>
+</head>
+<body>
+    <!-- header start -->
+    <header>
+        <div id="navbar">
+            <img src="img/logo.png" alt="logo">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <h1>Welcome to <span class="primary-text">Food Lover</span> Restaurant</h1>
+            <p>Here you can find the most delicious food in the world</p>
+            <a href="#" class="btn btn-primary">Book a Table</a>
+        </div>
+    </header>
+    <!-- header end -->
+    <!-- about start -->
+    <main>
+        <section id="about">
+            <div class="container">
+                <div class="title">
+                    <h2>The Food lover History</h2>
+                    <p>More than 25+ years of experience</p>
+                </div>
+                <div class="about-content">
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta labore velit quis, autem magni corrupti magnam fugit perspiciatis vero corporis doloribus possimus suscipit esse eveniet a et necessitatibus aspernatur sint?</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta labore velit quis, autem magni corrupti magnam fugit perspiciatis vero corporis doloribus possimus suscipit esse eveniet a et necessitatibus aspernatur sint?</p>
+                        <a href="#" class="btn btn-secondary">LEARN MORE</a>
+                    </div>
+                    <img src="img/about_img.png" alt="pizza">
+                </div>
+            </div>
+        </section>    
+        <!-- about end-->
+
+        <!-- offers start -->
+        <section id="offers">
+            <div class="container">
+                <div class="title">
+                    <h2>Our Special Offers</h2>
+                    <p>More than 25+ years of experience</p>
+                </div>
+                <div class="offers-items">
+                    <div>
+                        <img src="img/offer1.png" alt="Quatro Pasta">
+                        <div>
+                            <h3>Quattro Pasta</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, eligendi?</p>
+                            <p><del>$55.00</del><span class="primary-text">$18.00</span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="img/offer2.png" alt="Vegetarian Pizza">
+                        <div>
+                            <h3>Vegetarian Pizza</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, eligendi?</p>
+                            <p><del>$55.00</del><span class="primary-text">$18.00</span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="img/offer1.png" alt="Gluten-free Pizza">
+                        <div>
+                            <h3>Gluten-free Pizza</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, eligendi?</p>
+                            <p><del>$55.00</del><span class="primary-text">$18.00</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </section>
+        <!-- offers end -->
+
+        <!-- Menu start -->
+        <section id="menu">
+            <div class="container">
+                <div class="title">
+                    <h2>Our Special Menu</h2>
+                    <p>Order two and get the third for free</p>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-items-left">
+                        <div class="menu-item">
+                            <img src="img/food1.png" alt="LASAL CHEESE">
+                            <div>
+                                <h3>LASAL Cheese <span class="primary-text">$18.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, iure.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="img/food2.png" alt="JUMBO CRAB SHRIMP">
+                            <div>
+                                <h3>JUMBO CRAB SHRIMP <span class="primary-text">$24.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, iure.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="img/food3.png" alt="KOKTAIL JOCIE ">
+                            <div>
+                                <h3>KOKTAIL JOCIE <span class="primary-text">$12.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, iure.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="img/food4.png" alt="CAPO STEAK">
+                            <div>
+                                <h3>CAPO STEAK <span class="primary-text">$18.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, iure.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="img/food5.png" alt="ORGANIC FOOD SALAD">
+                            <div>
+                                <h3>ORGANIC FOOD SALAD <span class="primary-text">$18.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, iure.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="img/food6.png" alt="CHEESE PIZZA">
+                            <div>
+                                <h3>CHEESE PIZZA <span class="primary-text">$18.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, iure.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-items-right">
+                        <div class="menu-item">
+                            <img src="./img/food7.jpeg" alt="KOFTA MEAT">
+                            <div>
+                                <h3>KOFTA MEAT <span class="primary-text">$40.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, explicabo.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./img/food8.jpeg" alt="SPANISH PIES">
+                            <div>
+                                <h3>SPANISH PIES <span class="primary-text">$14.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, explicabo.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./img/food9.jpeg" alt="CHEESE TOST">
+                            <div>
+                                <h3>CHEESE TOST <span class="primary-text">$6.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, explicabo.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./img/food10.jpeg" alt="FRUIT SALAD">
+                            <div>
+                                <h3>FRUIT SALAD <span class="primary-text">$14.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, explicabo.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./img/food11.jpeg" alt="CHICKEN SHAWARMA">
+                            <div>
+                                <h3>CHICKEN SHAWARMA <span class="primary-text">$20.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, explicabo.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="./img/food12.jpeg" alt="MEGA CHEESE PIZZA">
+                            <div>
+                                <h3>MEGA CHEESE PIZZA <span class="primary-text">$30.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, explicabo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn">EXPLORE FULL MENU</button>
+            </div>
+        </section>
+        <!-- Menu end -->
+
+        <!-- daytime start-->
+        <section id="daytime">
+            <div class="container">
+                <div class="daytime-items">
+                    <div class="daytime-item">
+                        <img src="./img/breckfastIcon.png" alt="brekfast">
+                        <h3>Breakfast</h3>
+                        <p>8:00 am to 10:00 am</p>
+                    </div>
+                    <div class="daytime-item">
+                        <img src="./img/lunchIcon.png" alt="Lunch">
+                        <h3>Lunch</h3>
+                        <p>4:00 pm to 7:00 pm</p>
+                    </div>
+                    <div class="daytime-item">
+                        <img src="./img/dinnerIcon.png" alt="Dinner">
+                        <h3>Dinner</h3>
+                        <p>9:00 pm to 1:00 pm</p>
+                    </div>
+                    <div class="daytime-item">
+                        <img src="./img/dessertIcon.png" alt="Dessert">
+                        <h3>Dessert</h3>
+                        <p>All day</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- daytime end -->
+
+        <!-- Gallery start -->
+        <section id="gallery">
+            <div class="container">
+                <h2>Our Food Gallery</h2>
+                <div class="img-gallery">
+                    <img src="img/gallery1.jpeg" alt="gallery1">
+                    <img src="img/gallery2.jpeg" alt="gallery2">
+                    <img src="img/gallery3.jpeg" alt="gallery3">
+                    <img src="img/gallery4.jpeg" alt="gallery4">
+                    <img src="img/gallery5.jpeg" alt="gallery5">
+                    <img src="img/gallery6.jpeg" alt="gallery6">
+                </div>
+            </div>
+        </section>
+        <!-- gallery end -->
+
+        <!-- contact start -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div>
+                            <h3>ADDRESS</h3>
+                            <p><i class="fa-solid fa-location-dot"></i>Hosary Mosque, 6 October, 
+                            Egypt</p>
+                            <p><i class="fa-solid fa-phone"></i>Phone: 123456987</p>
+                            <p><i class="fa-regular fa-envelope"></i> support@foodlover.com</p>
+                        </div>
+                        <div>
+                            <h3>WORKING HOURS</h3>
+                            <P>8:00 am to 11:00 pm on Weekdays</P>
+                            <P>11:00 am to 1:00 am on Weekends</P>
+                        </div>
+                        <div>
+                            <h3>FOLOW US</h3>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <form>
+                        <input type="text" name="name" id="name" placeholder="Full Name" required autocomplete="additional-name">
+                        <input type="text" name="Subject" id="Subject" placeholder="Subject" required>
+                        <textarea name="Message" id="Message" cols="30" rows="5" placeholder="Message"></textarea>
+                        <button type="submit" class="btn">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- contact end -->
+    </main>
+
+    <footer id="footer">
+        <p>Copyright &copy; 2023 All rights reserved | Made by <b><a href="#" target="_blank">ABIDI AMIRA</a></b></p>
+    </footer>    
+</body>
+</html>
